@@ -1,0 +1,63 @@
+.navbar{
+    display: flex;
+    height: 72px;
+    background-color: light;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 150px;
+    box-shadow: 0px 1px 0px 0px #E5E9F2;
+}
+
+.navbar-home{
+    color: #18191F;
+    font-feature-settings: 'salt' on, 'liga' off;
+    font-size: 18px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.div-btn{
+    margin-right: 150px;
+}
+
+
+.btn-login{
+    border-radius: 6px;
+    background: #3CA2D6;
+    width: 77px;
+    height: 40px;
+    border-color: transparent;
+    margin-right: 14px;
+    cursor: pointer;
+    
+    
+}
+
+.btn-login:hover{
+    box-shadow: 0 0 30px 3px #3CA2D6;
+}
+
+.btn-signup{
+    border-radius: 6px;
+    background: #4EEDCB;
+    width: 77px;
+    height: 40px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.btn-signup:hover{
+    box-shadow: 0 0 30px 3px #4EEDCB;
+}
+
+.text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}

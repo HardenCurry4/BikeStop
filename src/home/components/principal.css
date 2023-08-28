@@ -1,0 +1,113 @@
+.div-container{
+    display: flex;
+    height: 794px;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.sub-div{
+    display: flex;
+    justify-content: center;
+    margin-left: 600px;
+
+
+}
+
+.div-signup{
+    display: none;
+}
+
+.div-signup-visible {
+    display: flex !important;
+    width: 1000px;
+    height: 660px;
+    background: #343434;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 28px;
+    
+    
+    
+}
+
+.div-bs{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 540px;
+    margin-left: 150px;
+    margin-top: 252px;
+    margin-right: 200px;
+}
+
+.text-bs{
+    color: #18191F;
+    font-feature-settings: 'salt' on, 'liga' off;
+    
+    
+
+    font-family: Inter;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 98px;
+    margin: 0px 0px 15px 0px;
+}
+
+.text-p{
+    color: var(--text-gray-900, #18191F);
+    font-feature-settings: 'salt' on, 'liga' off;
+   
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; 
+    margin: 0px 0px 32px 0px;
+}
+
+.btn-getstarted{
+    border-radius: 6px;
+    background: #4EEDCB;
+    width: 154px;
+    height: 48px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.text-btn-star{
+    color:#FFF;
+    text-align: center;
+    font-feature-settings: 'salt' on, 'liga' off;
+    cursor: pointer;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.div-muestra{
+    display: flex;
+    
+}
+
+.div-cir{
+    margin-top: 77px;
+    width: 640px;
+    height: 640px;
+    border-radius: 640px;
+    background: rgba(60, 162, 214, 0.84);
+}
+
+.img-muestra{
+    width:768px;
+    height: 480px;
+    position: relative;
+    top: 157px;
+    right: 420px;
+    
+}
