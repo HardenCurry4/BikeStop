@@ -16,7 +16,9 @@
     font-weight: 700;
     line-height: 40px; 
     padding-right: 300px;
+    margin-top: 38px;
     margin-bottom: 0px;
+
 }
 
 
@@ -51,8 +53,9 @@
     flex-direction: column;
     height: 380px;
     justify-content: space-between;
-    padding-top:104px;
+    padding-top:103px;
     width: 500px;
+    box-sizing: initial;
     
 }
 
@@ -61,10 +64,14 @@ input{
     color: #FFF;
     font-size: 20px;
     border: none;
-    box-shadow: 0px 1px 0px 0px #FFF;
+    box-shadow: 0px 2px 0px 0px #7e7c7c;
     outline: none;
     margin-bottom: 30px;
     
+}
+
+input:focus{
+    box-shadow: 0px 2px 0px 0px #ffffff;
 }
 
 .input-rol{

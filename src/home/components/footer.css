@@ -1,12 +1,14 @@
 .div-footer{
     width: 100%;
-    height: 500px;
+    height: auto;
     background-color: #0B0D17;
 }
 
 .div-logo-texto{
     display: flex;
+    height: auto;
     justify-content: space-between;
+
 }
 
 .div-logo{
@@ -33,7 +35,7 @@
 
 .universidad{
     font-size: 24px;
-    margin-top: 70px;
+    margin-top: 50px;
     margin-bottom: 32px;
 }
 
@@ -54,7 +56,7 @@ a{
 
 .txt-contacto{
     font-size: 24px;
-    margin-top: 70px;
+    margin-top: 50px;
     margin-bottom: 20px;
 
 }
@@ -69,4 +71,66 @@ a{
 
     background-color:Black;
     height: 70px;
+}
+
+
+/* ############################### */
+/* media queries */
+
+@media(max-width: 1200px) and ( min-width: 1001px ) {
+    .img-logo{
+        width: 369px;
+    }
+ }
+
+@media(max-width: 1000px){
+    .div-logo{
+        display: none;
+    }
+
+    .div-universidad{
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .div-contacto{
+        padding-bottom: 20px;
+    }
+
+    .txt-contacto{
+        font-size: 24px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .div-repre{
+        margin-bottom: 2vh;
+    }
+
+}
+
+@media(max-width: 800px){
+    .div-logo{
+        display: none;
+    }
+
+    .div-universidad{
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .div-contacto{
+        padding-bottom: 20px;
+    }
+
+    .txt-contacto{
+        font-size: 24px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .div-repre{
+        margin-bottom: 2vh;
+    }
+
 }

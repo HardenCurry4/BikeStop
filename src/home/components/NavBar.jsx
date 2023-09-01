@@ -10,7 +10,7 @@ export const NavBar = () => {
     
   return (
     <>
-        <nav className='navbar'>        
+        <nav className='navbar-principal'>        
             <a className="navbar-home " href="#"> BikeStop </a>
             <div className='div-btn'>
             <NavLink to="/login">

@@ -3,15 +3,13 @@
     height: 794px;
     justify-content: center;
     overflow: hidden;
+    flex-wrap: wrap;
     
 }
 
 .sub-div{
     display: flex;
     justify-content: center;
-    margin-left: 600px;
-
-
 }
 
 .div-signup{
@@ -27,28 +25,21 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    border-radius: 28px;
-    
-    
-    
+    border-radius: 28px;    
 }
 
 .div-bs{
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     width: 540px;
-    margin-left: 150px;
-    margin-top: 252px;
-    margin-right: 200px;
+    margin-right: 15vw;
 }
 
 .text-bs{
     color: #18191F;
     font-feature-settings: 'salt' on, 'liga' off;
-    
-    
-
     font-family: Inter;
     font-size: 72px;
     font-style: normal;
@@ -107,7 +98,103 @@
     width:768px;
     height: 480px;
     position: relative;
-    top: 157px;
-    right: 420px;
+    top: 72px;
+    left: 150px;
     
+}
+
+/* ############################### */
+/* media queries */
+
+@media(max-width: 1500px) and ( min-width: 1201px ) {
+    .div-bs{
+        margin-right: 5vw;
+        margin-left: 0;
+    }
+ 
+    .sub-div{
+     margin-left: 5vw; 
+ 
+    }
+ 
+ }
+
+ @media(max-width: 1200px) and ( min-width: 1001px ) {
+    .div-bs{
+        margin-right: 0vw;
+        margin-left: 5vw;
+    }
+ 
+    .sub-div{
+     margin-left: 5vw; 
+ 
+    }
+
+    .div-cir{
+        margin-top: 107px;
+        width: 500px;
+        height: 500px;
+        border-radius: 500px;
+    }
+
+    .img-muestra{
+        width: 688px;
+        height: 400px;
+        top: 50px;
+        left: 120px;
+    }
+    
+ 
+ }
+
+@media(max-width: 1000px) and ( min-width: 801px ) {
+   .div-muestra{
+    display: none;
+   }
+
+   .sub-div{
+    margin-left: 10vw; 
+
+   }
+
+}
+
+@media(max-width: 800px){
+    .div-container{
+        height: auto;
+        
+    }
+
+    .sub-div{
+        flex-direction: column-reverse;
+        margin-left: 0;
+    }
+
+    .div-bs{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-right: 0;
+
+    }
+
+    .text-p{
+        flex-wrap: wrap;
+    }
+
+    .div-cir{
+        margin-top: 77px;
+        width: 540px;
+        height: 540px;
+        border-radius: 440px;
+        background: rgba(60, 162, 214, 0.84);
+    }
+
+    .img-muestra{
+        width:568px;
+        height: 400px;
+        position: relative;
+        top: 72px;
+        left: 110px;
+        
+    }
 }

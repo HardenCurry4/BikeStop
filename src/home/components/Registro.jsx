@@ -34,7 +34,7 @@ export const Registro = () => {
             <input className='input-tipo-id' type="text" placeholder='Tipo de Identificacion'/>
             <input className='input-email' type="email" placeholder='Correo'/>
             <input className='input-apellido' type="text" placeholder='Apellido'/>
-            <input className='input-confirmar-contra' type="text" placeholder='Confirmar Contraseña'/>
+            <input className='input-confirmar-contra' type="password" placeholder='Confirmar Contraseña'/>
           </div>
         </div>
 

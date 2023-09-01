@@ -70,13 +70,6 @@ export const Footer = () => {
 
                   </div>
               </div>
-
-
-              <div className='mini-footer'>
-
-
-              </div>
-
           </div>
     
     </>
