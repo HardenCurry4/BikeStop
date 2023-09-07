@@ -1,9 +1,17 @@
 import React from 'react'
 import muestra from '../../assets/muestra.png';
-import { Registro } from './registro';
+import { Registro } from './Registro';
 import './principal.css'
+import { Login } from '../../auth/pages/Login';
 
-export const Principal = () => {
+export const Principal = () => {  
+    const started = () => {
+        document.getElementById("login").classList.toggle("div-login-visible")
+        document.getElementById("signup").classList.remove("div-signup-visible")
+        
+        document.getElementById("overlay").classList.toggle("overlay")
+      }
+
   return (
     <>
           <div className='div-container'>
@@ -13,7 +21,7 @@ export const Principal = () => {
                       <p className='text-p' >Encuentra y disfruta de biciparqueaderos con BikeStop. 
                           Tu destino confiable para estacionar tu bicicleta de forma conveniente y protegida.
                       </p>
-                      <button className='btn-getstarted' type='button'> <label className='text-btn-star'> Get Started </label> </button>
+                      <button onClick={started} className='btn-getstarted' type='button'> <label className='text-btn-star'> Get Started </label> </button>
                   </div>
 
                   <div className='div-muestra'>
@@ -24,8 +32,13 @@ export const Principal = () => {
                   </div>
 
                   <div id='signup' className='div-signup'>
-                      <Registro/>
+                      <Registro />
+                      
+                  </div>
 
+                  <div id='login' className='div-signup'>
+                      <Login />
+                      
                   </div>
 
               </div>

@@ -1,18 +1,18 @@
-.div-container-registro{
+.div-container-login{
     width: 100%;
     border-radius: 28px;
 }
 
-.div-inputs{
+.div-inputs-login{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 28vh;
+    height: 14vh;
 
 }
 
-.txt-registro{
+.txt-login{
     color: #FFF;
     text-align: center;
     font-feature-settings: 'salt' on, 'liga' off;
@@ -20,18 +20,18 @@
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
-input{
+.div-inputs-login input{
     background-color: #343434;
     color: #FFF;
     font-size: 20px;
     border: none;
     box-shadow: 0px 2px 0px 0px #7e7c7c;
     outline: none;
-    margin: 2px 50px;
-    width: 20   vw;
+    margin: 2px 10px;
+    width: 15vw;
     min-width: 300px;
         
 }
@@ -40,14 +40,14 @@ input:focus{
     box-shadow: 0px 2px 0px 0px #ffffff;
 }
     
-.div-btns{
+.div-btns-login{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 30px 30px;
+    padding: 15px 0px;
 }
 
-.div-btns div{
+.div-btns-login div{
     display: flex;
     width: 15vw;
     min-width: 300px;

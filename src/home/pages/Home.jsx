@@ -1,19 +1,23 @@
 import React from 'react';
 import { NavBar } from '../components/NavBar';
-import { Principal } from '../components/Principal';
+import { Principal } from '../components/principal';
 import { Footer } from '../components/Footer';
+
 
 
 export const Home = () => {
     
   return (
     < >
-      <NavBar /> 
-    
-      <Principal />
-    
-      <Footer />
-    
+      <div id='overlay' className=''>
+
+        <NavBar /> 
+      
+        <Principal />
+      
+        <Footer />
+      
+      </div>
     </>
   )
 }
