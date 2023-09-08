@@ -110,7 +110,7 @@ a{
 
 }
 
-@media(max-width: 800px){
+@media(max-width: 800px) and ( min-width: 521px ){
     .div-logo{
         display: none;
     }
@@ -134,4 +134,37 @@ a{
         margin-bottom: 2vh;
     }
 
+}
+
+@media (max-width:520px) {
+    .div-logo-texto{
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .div-logo{
+        display: none;
+    }
+
+    .div-universidad{
+        margin-left: 2vw;
+        margin-right: 2vw;
+        display: contents;
+    }
+
+    .div-contacto{
+        padding-bottom: 20px;
+        margin-left: 2vw;
+        display: contents;
+    }
+
+    .txt-contacto{
+        font-size: 24px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .div-repre{
+        margin-bottom: 2vh;
+    }
 }
