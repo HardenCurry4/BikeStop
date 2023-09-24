@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './login.css'
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
   const signup = () => {
@@ -27,7 +28,9 @@ export const Login = () => {
         <div>
 
           <button onClick={signup} className='btn-cancelar '> <h4 className='text' > Cancelar </h4> </button>
+          <Link to="/app">
           <button  className='btn-signup ' type="button" > <h4 className='text'> Login </h4> </button>
+          </Link>
 
         </div>
 
