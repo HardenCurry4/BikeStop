@@ -9,6 +9,7 @@
     height: 100vh;
     width: 25vw;
     max-width: 400px;
+    min-width: 170px;
     position: relative;
     background-color: #2A3F54;
     transition: 5ms;

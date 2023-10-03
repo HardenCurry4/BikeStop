@@ -1,0 +1,28 @@
+.div-espacios-estacionar{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 50px;
+    -webkit-user-drag: none;  
+}
+
+.btn-llegada{
+    background-color: #07E81F;
+    border: none;
+}
+
+.btn-llegada svg{
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}
+
+.btn-salida{
+    background-color: #EB0F0C;
+    border: none;
+}
+
+.btn-salida svg{
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}

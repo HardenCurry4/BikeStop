@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import '../styles/navbar.css'
 import { FcMenu } from "react-icons/fc";
-import { Link } from 'react-router-dom';
 import { Principal } from './principal';
 import { MenuLateral } from './MenuLateral';
+import { useAuthStore } from '../../hooks/useAuthStore'
+import '../styles/navbar.css'
 
 export const NavBar = () => {
   const menu = () => {
@@ -15,6 +15,8 @@ export const NavBar = () => {
   const cambiarOpcion = (opcion) => {
     setOpcionSeleccionada(opcion);
   };
+
+  const { startLogout } = useAuthStore();
 
   return (
     <>
@@ -35,9 +37,7 @@ export const NavBar = () => {
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <Link to='/home'>
-                    <button className="dropdown-item" >Salir</button>
-                  </Link>
+                    <button className="dropdown-item" onClick={startLogout} >Salir</button>
 
                 </li>
               </ul>

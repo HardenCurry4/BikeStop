@@ -1,0 +1,47 @@
+.container-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+.container-user{
+    background-color: #2B2D31;
+    width: 50vw;
+    height: 34vh;
+    min-height: 210px;
+    color: #fff;
+}
+
+.container-user button{
+    background-color: #4E5058;
+    border: none;
+    width: 70px;
+    height: 40px;
+    color: #fff;
+}
+
+.container-user button:hover{
+    background-color: #54535A;
+
+}
+
+.container-info{
+    height: 100%;
+    padding: 20px;
+}
+
+.container-info div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-texto{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-bottom: 4vh;
+    cursor: default;
+}
