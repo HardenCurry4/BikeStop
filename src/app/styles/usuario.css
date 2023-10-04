@@ -10,7 +10,7 @@
 .container-user{
     background-color: #2B2D31;
     width: 50vw;
-    height: 34vh;
+    height: 400px;
     min-height: 210px;
     color: #fff;
 }
@@ -36,6 +36,7 @@
 .container-info div{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .div-texto{
@@ -44,4 +45,28 @@
     height: fit-content;
     margin-bottom: 4vh;
     cursor: default;
+    align-items: start !important;
+}
+
+.div-texto h5{
+    color: #ADADAD;
+}
+
+.eliminaruser{
+    width: 100%;
+    justify-content: end !important;
+}
+
+.eliminaruser button{
+    width: 150px;
+    background-color: #2B2D31;
+    border: solid 1px #dc3545;
+}
+
+.eliminaruser button:hover{
+    background-color: #dc3545;
+}
+
+.swal2-cancel{
+    margin-right: 20px;
 }
