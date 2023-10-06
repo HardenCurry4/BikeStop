@@ -6,7 +6,8 @@ import { useEffect } from "react"
 
 
 export const AppRouter = () => {
-  const { status, tokensito } = useAuthStore();
+  const { status, tokensito, user } = useAuthStore();
+  const { rol } = user;
   useEffect(() => {
     tokensito()
 

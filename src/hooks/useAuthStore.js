@@ -1,32 +1,55 @@
 import { useDispatch, useSelector } from "react-redux";
 import { onLogin, onLogout, onUpsito } from "../store/slices/authslice";
+import { frasesDespedida } from '../app/data/frasesDespedida';
 import Bikeapi from "../api/Bikeapi";
 import Swal from "sweetalert2";
 
 
 export const useAuthStore = () => {
+    const fraseAleatoria = frasesDespedida[Math.floor(Math.random() * frasesDespedida.length)];
     const { status, user, errorMessage } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const startLogin = async (correo, pw) => {
         try {
-            const { data } = await Bikeapi.post("/auth", {correo, pw });
-            localStorage.setItem("token",data.token);
-            dispatch(onLogin( { uid: data.uid, nombre: data.nombre, codigo:data.codigo, correo:data.correo, ocu: data.ocu} ))
-            console.log(data);
+            const { data } = await Bikeapi.post("/auth", { correo, pw });
+            console.log(data)
+            localStorage.setItem("token", data.token);
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo, ocu: data.ocu, rol: data.rol   }))
         } catch (error) {
-            console.log(error);
+
+            const { response } = error;
+            const { data } = response;
+            const { msg } = data
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            })
         }
     };
 
-    
+
     const startRegister = async (nombre, codigo, correo, pw) => {
         try {
-            const { data } = await Bikeapi.post("/auth/register", {nombre, codigo, correo, pw});
-            localStorage.setItem("token",data.token);
-            dispatch(onLogin( { uid: data.uid, nombre: data.nombre, codigo:data.codigo, correo:data.correo, ocu: data.ocu} ))
+            const { data } = await Bikeapi.post("/auth/register", { nombre, codigo, correo, pw });
+            console.log(data)
+            localStorage.setItem("token", data.token);
+
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo, ocu: data.ocu }))
+            console.log(data.uid, data.nombre, data.codigo, data.correo, data.ocu)
+
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            const { data } = response;
+            const { msg } = data;
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            })
         }
     };
 
@@ -34,18 +57,17 @@ export const useAuthStore = () => {
         dispatch(onLogout())
         localStorage.clear();
     };
-    
-    const tokensito =async()=>{
-        if(!localStorage.getItem("token")){
+
+    const tokensito = async () => {
+        if (!localStorage.getItem("token")) {
             dispatch(onLogout());
             return;
         }
         try {
-            const { data }=await Bikeapi.get("/auth/renew");
-            
-            
+            const { data } = await Bikeapi.get("/auth/renew");
+            console.log(data)
             localStorage.setItem("token", data.token);
-            dispatch(onLogin( { uid: data.uid, nombre: data.nombre, codigo:data.codigo, correo:data.correo, ocu: data.ocu, rol:data.rol} ))
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, correo: data.correo, codigo: data.codigo, ocu: data.ocu, rol: data.rol }))
         } catch (error) {
             localStorage.clear();
             Swal.fire({
@@ -55,43 +77,88 @@ export const useAuthStore = () => {
                 showConfirmButton: false,
                 timer: 1500
             })
+
             dispatch(onLogout("error en el token"));
         }
     };
 
-    const UpdateName = async ( nombre ) => {
+    const UpdateName = async (nombre) => {
         try {
             const { data } = await Bikeapi.put("/upduser/updnombre", { nombre });
-            const res = await Bikeapi.post("/auth/updateToken",{uid: user.uid, nombre: nombre, codigo:user.codigo,correo: user.correo, rol: user.rol, ocu: data.ocu});
+            const res = await Bikeapi.post("/auth/updateToken", { uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, rol: user.rol, ocu: data.ocu });
             localStorage.setItem("token", res.data.token);
 
-            dispatch(onUpsito({...user, nombre: nombre}))
+            dispatch(onUpsito({ ...user, nombre: nombre }))
 
-            dispatch(onLogin( { uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu} ))
-            
+            dispatch(onLogin({ uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu }))
+
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     };
 
 
-    const UpdatePw = async ( pw, pwupd ) => {
+    const UpdatePw = async (pw, pwupd) => {
         try {
             const { data } = await Bikeapi.put("/upduser/updpw", { pw, pwupd });
-            const res = await Bikeapi.post("/auth/updateToken",{uid: user.uid, nombre: nombre, codigo:user.codigo,correo: user.correo, rol: user.rol, ocu: data.ocu});
+            const { msg } = data
+            const res = await Bikeapi.post("/auth/updateToken", { uid: user.uid, nombre: user.nombre, codigo: user.codigo, correo: user.correo, rol: user.rol, ocu: data.ocu });
             localStorage.setItem("token", res.data.token);
 
-            dispatch(onUpsito({...user}))
+            dispatch(onUpsito({ ...user }))
 
-            dispatch(onLogin( { uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu} ))
-            
+            dispatch(onLogin({ uid: user.uid, nombre: user.nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu }))
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Cambio!!!',
+                text: msg,
+            });
+
+
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            const { data } = response;
+            const { msg, ok } = data
+
+            if (!ok) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: msg,
+                });
+            }
         }
     };
-    
-    
-    
 
-    return { startLogin, startLogout, status, user, errorMessage, startRegister, tokensito, UpdateName, UpdatePw };
+
+    const deleteUser = async (pw) => {
+        try {
+            await Bikeapi.put("/upduser/updel", { pw: pw });
+            localStorage.clear();
+
+            dispatch(onLogout())
+
+            Swal.fire(
+                'Eliminada!',
+                fraseAleatoria,
+                'success'
+            );
+
+        } catch (error) {
+            console.log(error)
+            const { response } = error;
+            const { data } = response;
+            const { msg } = data;
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            });
+
+        }
+    };
+
+    return { startLogin, startLogout, status, user, errorMessage, startRegister, tokensito, UpdateName, UpdatePw, deleteUser };
 };

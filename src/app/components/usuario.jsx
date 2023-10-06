@@ -11,8 +11,9 @@ export const Usuario = () => {
   const { user } = useAuthStore();
   const { ChangeName } = UpdName();
   const { ChangePw } = UpdPw();
+  const { handleDeleteUser } = deleteUser();
   const { nombre, correo } = user;
-  const maskedEmail = `${'********'.slice(0, correo.indexOf('@'))}${correo.slice(correo.indexOf('@'))}`;
+  const maskedEmail = correo;
 
   return (
     <>
@@ -49,7 +50,7 @@ export const Usuario = () => {
               </div>
             </div>
             <div className="eliminaruser ">
-              <button onClick={ deleteUser }>Eliminar Cuenta</button>
+              <button onClick= { handleDeleteUser } >Eliminar Cuenta</button>
 
             </div>
           </div>

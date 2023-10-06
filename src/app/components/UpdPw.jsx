@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export const UpdPw = () => {
+  const { UpdatePw } = useAuthStore();
     const ChangePw = async () => {
         const { value: formValues } = await Swal.fire({
           title: "Cambiar Contraseña",
@@ -11,24 +13,26 @@ export const UpdPw = () => {
           focusConfirm: false,
           showCancelButton: true,
           preConfirm: () => {
-            const currentPassword = document.getElementById("current-password").value;
-            const newPassword = document.getElementById("new-password").value;
+            const pw = document.getElementById("current-password").value;
+            const pwupd = document.getElementById("new-password").value;
 
-                       
-            // Si las contraseñas no son iguales, devolver un objeto con las contraseñas para continuar
-            return { currentPassword, newPassword };
+            return { pw, pwupd };
           }
         });
     
-        if (formValues && formValues.currentPassword && formValues.newPassword) {
-          // Aquí deberías hacer una solicitud HTTP para cambiar la contraseña en el servidor
-          // Suponiendo que la solicitud es exitosa, mostrar el cuadro de diálogo de éxito
-          Swal.fire({
-            title: "Contraseña cambiada",
-            icon: "success",
-            text: "Tu contraseña ha sido cambiada correctamente.",
-            confirmButtonText: "Aceptar",
-          });
+        if (formValues && formValues.pw && formValues.pwupd) {
+
+          if (formValues.pwupd.length < 6) {
+            Swal.fire({
+              title: "Error",
+              icon: "error",
+              text: "La contraseña debe tener minimo 6 caracteres",
+              confirmButtonText: "Aceptar",
+            });
+            
+          }else{
+            UpdatePw(formValues.pw, formValues.pwupd)       
+          }
         } else {
           // Si el usuario cierra el cuadro de diálogo sin ingresar las contraseñas
           Swal.fire({

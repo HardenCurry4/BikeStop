@@ -2,6 +2,7 @@ import React from 'react'
 import './registro.css'
 import {useForm } from '../../hooks/useForm'
 import { useAuthStore } from '../../hooks/useAuthStore'
+import Swal from 'sweetalert2'
 
 export const Registro = () => {
   const signup = () => {
@@ -15,7 +16,28 @@ export const Registro = () => {
 
 
   const authregister = ( ) => {
-    if(formState.pw !== formState.comPw) return console.log('pilas socioooooo')
+    if (formState.nombre === '' || formState.codigo === '' || formState.correo === '' || formState.pw === '' || formState.comPw === '') {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  'Complete el formulario de registro',
+      })
+    }
+
+    if (!/^\d+$/.test( formState.codigo )) {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  'Codigo no es valido',
+      });
+    }
+    
+    if(formState.pw !== formState.comPw) 
+    return Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text:  'Las contraseñas no son iguales',
+    })
     startRegister (formState.nombre, formState.codigo, formState.correo, formState.pw)
 
   }
@@ -53,3 +75,5 @@ export const Registro = () => {
     </>
   )
 }
+
+

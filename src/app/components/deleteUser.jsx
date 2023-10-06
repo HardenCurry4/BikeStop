@@ -1,43 +1,41 @@
-import Swal from "sweetalert2";
-import { frasesDespedida } from '../data/frasesDespedida'
+import Swal from 'sweetalert2';
+import { useAuthStore } from "../../hooks/useAuthStore";
+
 
 export const deleteUser = () => {
+  const { deleteUser } = useAuthStore();
 
-    const fraseAleatoria = frasesDespedida[Math.floor(Math.random() * frasesDespedida.length)];
+  const handleDeleteUser = () => {
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: 'Por favor, ingrese su contraseña para confirmar la eliminación del usuario:',
+      input: 'password',
+      inputPlaceholder: 'Contraseña',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true,
+      footer: "Se eliminará su cuenta y todos sus datos!"
+    }).then((result) => {
+      const pw = result.value;
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-      })
-      
-      swalWithBootstrapButtons.fire({
-        title: '¿Esta Seguro?',
-        text: "se eliminara su cuenta y todos sus datos!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, eliminar!',
-        cancelButtonText: 'No, cancelar!',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            'Eliminada!',
-            fraseAleatoria,            
-            'error'
-          )
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelado',
-            'Ufff por poco :)',
-            'success'
-          )
-        }
-      })
+      if (result.isConfirmed) {
+        deleteUser(pw);
 
-}
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelado',
+          'La eliminación del usuario ha sido cancelada.',
+          'info'
+        );
+      }
+    });
+  };
+
+  return {
+    handleDeleteUser
+
+  };
+
+};
