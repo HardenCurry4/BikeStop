@@ -13,20 +13,22 @@ export const useAuthStore = () => {
     const startLogin = async (correo, pw) => {
         try {
             const { data } = await Bikeapi.post("/auth", { correo, pw });
-            console.log(data)
             localStorage.setItem("token", data.token);
-            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo, ocu: data.ocu, rol: data.rol   }))
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo, ocu: data.ocu, rol: data.rol, ultima: data.ultima}))
         } catch (error) {
-
+            console.log(error)
             const { response } = error;
             const { data } = response;
             const { msg } = data
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: msg,
-            })
+            
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: msg,
+                })
+  
+            
         }
     };
 
@@ -34,12 +36,9 @@ export const useAuthStore = () => {
     const startRegister = async (nombre, codigo, correo, pw) => {
         try {
             const { data } = await Bikeapi.post("/auth/register", { nombre, codigo, correo, pw });
-            console.log(data)
             localStorage.setItem("token", data.token);
-
-            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo, ocu: data.ocu }))
-            console.log(data.uid, data.nombre, data.codigo, data.correo, data.ocu)
-
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo,  ocu: data.ocu, rol: data.rol, ultima: data.ultima}))
+            console.log(data.uid,data.nombre, data.codigo,data.correo, data.ocu,user.rol,data.ultima)
         } catch (error) {
             const { response } = error;
             const { data } = response;
@@ -56,6 +55,14 @@ export const useAuthStore = () => {
     const startLogout = () => {
         dispatch(onLogout())
         localStorage.clear();
+        Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: 'Sesion Cerrada',
+            text: 'De nada y vuelva pronto',
+            showConfirmButton: false,
+            timer: 1500
+        })
     };
 
     const tokensito = async () => {
@@ -65,9 +72,8 @@ export const useAuthStore = () => {
         }
         try {
             const { data } = await Bikeapi.get("/auth/renew");
-            console.log(data)
             localStorage.setItem("token", data.token);
-            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, correo: data.correo, codigo: data.codigo, ocu: data.ocu, rol: data.rol }))
+            dispatch(onLogin({ uid: data.uid, nombre: data.nombre, correo: data.correo, codigo: data.codigo, ocu: data.ocu, rol: data.rol, ultima: data.ultima}))
         } catch (error) {
             localStorage.clear();
             Swal.fire({
@@ -88,9 +94,9 @@ export const useAuthStore = () => {
             const res = await Bikeapi.post("/auth/updateToken", { uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, rol: user.rol, ocu: data.ocu });
             localStorage.setItem("token", res.data.token);
 
-            dispatch(onUpsito({ ...user, nombre: nombre }))
+            dispatch(onUpsito({ ...user, nombre: nombre  }))
 
-            dispatch(onLogin({ uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu }))
+            dispatch(onLogin({ uid: user.uid, nombre: nombre, codigo: user.codigo, correo: user.correo, rol: user.rol, ocu: user.ocu }))
 
         } catch (error) {
             console.log(error)
@@ -107,7 +113,7 @@ export const useAuthStore = () => {
 
             dispatch(onUpsito({ ...user }))
 
-            dispatch(onLogin({ uid: user.uid, nombre: user.nombre, codigo: user.codigo, correo: user.correo, ocu: user.ocu }))
+            dispatch(onLogin({ uid: user.uid, nombre: user.nombre, codigo: user.codigo, correo: user.correo, rol: user.rol, ocu: user.ocu }))
 
             Swal.fire({
                 icon: 'success',

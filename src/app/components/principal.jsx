@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Inicio } from './inicio'
 import { Estacionar } from './estacionar'
 import { Usuario } from './usuario'
@@ -9,7 +9,7 @@ export const Principal = ({ opcionSeleccionada }) => {
 
   let component = ( opcionSeleccionada == 'inicio') ? <Inicio/> :
                   ( opcionSeleccionada == 'estacionar') ? <Estacionar/>:
-                  ( opcionSeleccionada == 'usuario') ? <Usuario/> : <Usuario/>;
+                  ( opcionSeleccionada == 'usuario') ? <Usuario/> : <Inicio/>;
 
   
 
