@@ -36,7 +36,15 @@ export const useCuposStore = () => {
             })
             
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            const { data } = response;
+            const { msg } = data;
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            });
         }
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useInfoStore } from '../../hooks/useInfoStore';
 import { mes } from '../data/mes'
-import { XAxis, YAxis, Tooltip, Legend, BarChart, Bar, CartesianGrid} from 'recharts';
+import { XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer, Bar, BarChart, AreaChart, Area} from 'recharts';
 
 export const InfoM = () => {
     const hoy = new Date();
@@ -13,24 +13,28 @@ export const InfoM = () => {
       }, [])
 
       const datosGrafico = infoM.map(item => ({
-        name: `${mes[item._id.month]}-${item._id.year}`, 
+        name: `${mes[item._id.month]}`, 
         Reservas: item.totalReservas, 
       }));
       
   return (
     <>
       <div className='d-flex pt-5'>
-        <div className='text-light'>
-          <BarChart width={1200} height={400} data={datosGrafico} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid stroke="#fff" strokeDasharray="3 3" />
-            <XAxis stroke="#fff" dataKey="name" />
-            <YAxis stroke="#fff" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="Reservas" name='Total de Reservas ' fill="#2A3F54" />
-          </BarChart>
-        </div>
+        <div className='text-light' style={{ width: '80%', height: '400px' }} >
 
+        <ResponsiveContainer width="100%" height="100%">
+        <BarChart width={500} height={300} data={datosGrafico}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis stroke="#fff" dataKey="name" />
+          <YAxis stroke="#fff" />
+          <Tooltip />
+          <Legend />
+
+          <Bar dataKey="Reservas" fill="#8884d8" minPointSize={10} />
+        </BarChart>
+      </ResponsiveContainer>
+        </div>
         <div>
           <h4 className='text-light' >Grafico del año {añoActual} </h4>
         </div>

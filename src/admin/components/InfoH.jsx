@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useInfoStore } from '../../hooks/useInfoStore';
 import { hora } from '../data/hora'
-import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area, ResponsiveContainer} from 'recharts';
 
 
 export const InfoH = () => {
@@ -31,15 +31,17 @@ export const InfoH = () => {
   return (
     <>
       <div className='d-flex pt-5'>
-        <div>
+        < div style={{ width: '100%', height: '400px' }}>
 
-          <AreaChart width={1400} height={400} data={datosGrafico} >
-            <XAxis stroke="#ccc" dataKey="name"  />
-            <YAxis stroke="#ccc" />
+          <ResponsiveContainer width="100%" height="100%">
+          <AreaChart width={400} height={400} data={datosGrafico} >
+            <XAxis stroke="#fff" dataKey="name"  />
+            <YAxis stroke="#fff" />
             <Tooltip />
             <Legend />
             <Area type="monotone" dataKey="Reservas" fill="#8884d8" />
           </AreaChart>
+          </ResponsiveContainer>
 
         </div>
         <div>

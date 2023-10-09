@@ -10,40 +10,37 @@ import '../styles/estacionar.css'
 export const Estacionar = () => {
   const { reservar, entregar } = useCuposStore();
   const { user } = useAuthStore();
-  const { ultima } = user;
-  
-  const dataToEncode = `     BikeStop   \n${user.nombre}  \n${ ultima }`
+  const { nombre, ultima, codigo } = user;
 
-
-
+  const dataToEncode = `BikeStop   \nUsuario: ${nombre}  \nCodigo: ${codigo} \nFecha y Hora: ${ultima}`
 
   return (
     <>
-    <div className='div-inicio'>
+      <div className='div-inicio'>
         <div className='div-espacios-estacionar'>
           <div >
             {user.ocu !== null ? (
               <div >
                 <button className='btn-salida' onClick={entregar}>Ya Voy de Salida
-                  <GiHand/>
+                  <GiHand />
                 </button>
               </div>
             ) : (
               <div>
                 <button className='btn-llegada' onClick={reservar}>Solicitar Estacionamiento
-                  <GrBike/>
+                  <GrBike />
                 </button>
               </div>
             )}
           </div>
 
           <div id='qr'>
-              
-              { ( user.ocu !== null ) ? (
-                  <QRCode  size={254} value={dataToEncode} />
-                ):
-                ''
-              }
+
+            {(user.ocu !== null) ? (
+              <QRCode size={254} value={dataToEncode} />
+            ) :
+              ''
+            }
 
           </div>
 
@@ -55,10 +52,6 @@ export const Estacionar = () => {
 
         </div>
       </div>
-    
-
-
-
     </>
   )
 }
