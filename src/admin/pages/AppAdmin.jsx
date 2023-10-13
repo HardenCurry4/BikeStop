@@ -7,8 +7,8 @@ export const AppAdmin = () => {
   return (
     <>
     <Navbar/>
+
     <Principal/>
-    
     
     </>
   )

@@ -12,7 +12,13 @@ export const Estacionar = () => {
   const { user } = useAuthStore();
   const { nombre, ultima, codigo } = user;
 
-  const dataToEncode = `BikeStop   \nUsuario: ${nombre}  \nCodigo: ${codigo} \nFecha y Hora: ${ultima}`
+  const lugar = (user.ocu === 'A')?
+    'Entrada Principal AV Cra 51'
+  :(user.ocu === 'B')?
+    'Entrada Secundaria Diag 68D'
+  :''
+
+  const dataToEncode = `BikeStop   \nUsuario: ${nombre}  \nCodigo: ${codigo} \nFecha y Hora: ${ultima} \nLugar: ${lugar}`
 
   return (
     <>

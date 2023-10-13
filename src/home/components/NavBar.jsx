@@ -27,7 +27,8 @@ export const NavBar = () => {
             <h4 className='text'> Login </h4> 
             </button>
             
-            <button onClick={signup} className='btn-signup '> 
+            {/* classname 'btn-signupt' para encontrarlo desde el test  */}
+            <button onClick={signup} className='btn-signup btn-signupt '> 
             <h4 className='text' > Sign Up </h4> 
             </button>
             </div>

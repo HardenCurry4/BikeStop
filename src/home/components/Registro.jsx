@@ -16,12 +16,21 @@ export const Registro = () => {
 
 
   const authregister = () => {
-    if (formState.nombre === '' || formState.codigo === '' || formState.correo === '' || formState.pw === '' || formState.comPw === '') {
+    if ((formState.nombre === '' || formState.codigo === '' || formState.correo === '' || formState.pw === '' || formState.comPw === '')) {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Complete el formulario de registro',
       })
+    }
+    
+    if (formState.codigo.length !== 11) {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El codigo debe tener 11 digitos',
+      })
+      
     }
 
     if (!/^\d+$/.test(formState.codigo)) {

@@ -35,6 +35,7 @@ export const useAuthStore = () => {
     const startRegister = async (nombre, codigo, correo, pw) => {
         try {
             const { data } = await Bikeapi.post("/auth/register", { nombre, codigo, correo, pw });
+            console.log(data)
             localStorage.setItem("token", data.token);
             dispatch(onLogin({ uid: data.uid, nombre: data.nombre, codigo: data.codigo, correo: data.correo,  ocu: data.ocu, rol: data.rol, ultima: data.ultima}))
         } catch (error) {

@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 
 export const useCuposStore = () => {
     const { total, ocupado, disponible } = useSelector((state) => state.cupos);
-    const dispatch = useDispatch();
     const { user } = useAuthStore();
+    const dispatch = useDispatch();
 
     const traerDatos = async () => {
         try {
@@ -53,7 +53,7 @@ export const useCuposStore = () => {
     const entregar = async () => {
         try {
             const { data } = await Bikeapi.put("/bicip/entrega");
-            const { msg } = data
+            const {  msg } = data;
             const res = await Bikeapi.post("/auth/updateToken",{ uid: user.uid, nombre: user.nombre, codigo:user.codigo,correo: user.correo, rol: user.rol , ocu: null});
             localStorage.setItem("token", res.data.token);
 
