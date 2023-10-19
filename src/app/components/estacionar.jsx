@@ -12,13 +12,25 @@ export const Estacionar = () => {
   const { user } = useAuthStore();
   const { nombre, ultima, codigo } = user;
 
-  const lugar = (user.ocu === 'A')?
-    'Entrada Principal AV Cra 51'
-  :(user.ocu === 'B')?
-    'Entrada Secundaria Diag 68D'
-  :''
+  const formatearFecha = (ultima) => {
 
-  const dataToEncode = `BikeStop   \nUsuario: ${nombre}  \nCodigo: ${codigo} \nFecha y Hora: ${ultima} \nLugar: ${lugar}`
+    const fechaOriginal = new Date(ultima);
+    const fechaModificada = new Date(fechaOriginal);
+    fechaModificada.setHours(fechaModificada.getHours() + 5);
+    const opciones = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const fechaFormateada = fechaModificada.toLocaleString('es-CO', opciones);
+    return fechaFormateada;
+
+  };
+
+  const lugar = (user.ocu === 'A')?
+    'Diag 68D'
+  :(user.ocu === 'B')?
+    'AV Cra 51'
+  :'';
+
+
+  const dataToEncode = `BikeStop \nUsuario: ${nombre} \nCodigo: ${codigo} \nFecha y Hora: ${formatearFecha(ultima)} \nLugar: ${lugar}`
 
   return (
     <>

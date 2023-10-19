@@ -4,6 +4,7 @@ import { App } from "../app/pages/App"
 import { useAuthStore } from '../hooks/useAuthStore'
 import { useEffect } from "react"
 import { AppAdmin } from "../admin/pages/AppAdmin"
+import { Loader } from "../app/components/loader"
 
 
 export const AppRouter = () => {
@@ -15,7 +16,7 @@ export const AppRouter = () => {
   }, [])
 
   if(status === 'cheking'){
-    return ( <div>cargando..............</div> )
+    return ( <Loader /> )
   
   }
   

@@ -1,0 +1,7 @@
+@media (max-width:1000px ){
+    .div-grafica-txt{
+        flex-direction: column-reverse;
+        margin-left: 20px;
+    }
+
+}

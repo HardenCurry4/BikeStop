@@ -6,7 +6,7 @@
 .div-espacios{
     display: flex;
     justify-content: space-around;
-    padding: 80px 50px;
+    padding: 8vh 3vh;
     -webkit-user-drag: none;  
 }
 
@@ -27,6 +27,86 @@
 
 .div-maps{
     padding: 0px 50px;
-    padding-top: 50px;
-    
+    padding-top: 3vh;
+    padding-bottom: 80px;
 }
+
+@media (max-width:1000px ){
+    .div-maps{
+        padding: 0px 50px;
+        padding-top: 3vh;
+        padding-bottom: 80px;
+    }
+
+    .div-espacios div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        height: 130px;
+        background-color: beige;
+    }
+
+    .div-espacios img{
+        height: 50px;
+        width: 50px;
+        -webkit-user-drag: none;
+    }
+
+}
+
+@media (max-width:700px ){
+    .div-maps{
+        padding: 0px 20px;
+        padding-top: 3vh;
+        padding-bottom: 80px;
+    }
+
+    .div-espacios div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 160px;
+        height: 120px;
+        background-color: beige;
+    }
+
+    .div-espacios img{
+        height: 50px;
+        width: 50px;
+        -webkit-user-drag: none;
+    }
+
+}
+
+@media (max-width:550px ){
+    .div-espacios{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh 3vh;
+        -webkit-user-drag: none;  
+    }
+
+    .div-maps{
+        padding-top: 1vh;
+    }
+
+    .div-espacios div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        width: 90vw;
+        height: 120px;
+        background-color: beige;
+    }
+
+    .div-espacios img{
+        height: 50px;
+        width: 50px;
+        -webkit-user-drag: none;
+    }
+
+}
+

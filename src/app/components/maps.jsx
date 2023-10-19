@@ -25,12 +25,12 @@ export const Maps = () => {
                 />
                 <Marker icon={customIcon} position={[4.578561896985571, -74.15819734998752]}>
                     <Popup>
-                        Entrada por la diag 68D sur. <br /> Entrada Secundaria.              
+                        Entrada por la diag 68D sur. <br /> Entrada Principal.             
                     </Popup>
                 </Marker>
                 <Marker icon={customIcon} position={[4.580048444586082, -74.15979594642728]}>
                     <Popup>                        
-                        Entrada por la AV Cra 51. <br /> Entrada Principal.
+                        Entrada por la AV Cra 51. <br /> Entrada Secundaria. 
                     </Popup>
                 </Marker>
             </MapContainer>

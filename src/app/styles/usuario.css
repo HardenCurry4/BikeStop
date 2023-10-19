@@ -13,6 +13,7 @@
     height: 400px;
     min-height: 210px;
     color: #fff;
+    min-width: 320px;
 }
 
 .container-user button{
@@ -70,3 +71,22 @@
 .swal2-cancel{
     margin-right: 20px;
 }
+
+@media (max-width:850px ){    
+    .container-user{
+        background-color: #2B2D31;
+        width: 80vw;
+        height: 400px;
+        min-height: 210px;
+        color: #fff;
+    }
+    
+}
+
+@media (max-width:420px ){    
+    .container-user{
+        margin-bottom: 100px;
+    }
+    
+}
+

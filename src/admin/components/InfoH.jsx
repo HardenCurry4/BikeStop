@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useInfoStore } from '../../hooks/useInfoStore';
 import { hora } from '../data/hora'
 import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area, ResponsiveContainer} from 'recharts';
+import '../styles/info.css'
 
 
 export const InfoH = () => {
@@ -30,7 +31,7 @@ export const InfoH = () => {
 
   return (
     <>
-      <div className='d-flex pt-5'>
+      <div className='d-flex pt-5 div-grafica-txt'>
         < div style={{ width: '100%', height: '400px' }}>
 
           <ResponsiveContainer width="100%" height="100%">

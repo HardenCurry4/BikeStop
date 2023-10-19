@@ -35,12 +35,11 @@ export const UpdPw = () => {
           }
         } else {
           // Si el usuario cierra el cuadro de diálogo sin ingresar las contraseñas
-          Swal.fire({
-            title: "Error",
-            icon: "error",
-            text: "Por favor, ingresa la contraseña actual y la nueva contraseña.",
-            confirmButtonText: "Aceptar",
-          });
+          Swal.fire(
+            'Cancelado',
+            'La contraseña no se cambio.',
+            'info'
+          );
         }
       };
 

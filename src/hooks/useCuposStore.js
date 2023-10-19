@@ -23,7 +23,7 @@ export const useCuposStore = () => {
     const reservar = async () => {
         try {
             const { data } = await Bikeapi.patch("/bicip/reserva");
-            const res = await Bikeapi.post("/auth/updateToken",{uid: user.uid, nombre: user.nombre, codigo:user.codigo,correo: user.correo, rol: user.rol});
+            const res = await Bikeapi.post("/auth/updateToken",{uid: user.uid, nombre: user.nombre, codigo:user.codigo, correo: user.correo, ocu: data.ocu, rol: user.rol});
             localStorage.setItem("token", res.data.token);
             dispatch(onUpsito({...user, ocu: data.ocu, ultima: res.data.ultima}))
             
@@ -66,7 +66,15 @@ export const useCuposStore = () => {
             })
             
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            const { data } = response;
+            const { msg } = data;
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            });
         }
 
 
